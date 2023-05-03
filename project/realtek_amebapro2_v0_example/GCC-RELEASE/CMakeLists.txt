@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 
+include(./toolchain.cmake)
+
 project(flash_bin)
 
 # root of realtek_amebapro2_v0_example

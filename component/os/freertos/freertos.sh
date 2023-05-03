@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ver=10.2.0
-os=`uname | sed 's\CYGWIN.*\CYGWIN\g'`
+os=`uname | gsed 's\CYGWIN.*\CYGWIN\g'`
 
 function prebuild_exec(){
 	#echo Current param 0:$0 1:$1 2:$2 3:$3
