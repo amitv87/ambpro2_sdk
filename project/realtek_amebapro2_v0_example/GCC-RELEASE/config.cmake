@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.6)
 if(NOT DEFINED CONFIG_DONE)
 	execute_process(COMMAND uname OUTPUT_VARIABLE uname)
 
+	set(SED "sed")
+
 	if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
 		message(STATUS "Build on Linux")
 		set(LINUX TRUE)
@@ -26,6 +28,7 @@ if(NOT DEFINED CONFIG_DONE)
 
 	if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Darwin")
 	   set(DARWIN TRUE)
+	   set(SED "gsed")
 	else()
 		set(DARWIN FALSE)
 	endif()
@@ -181,8 +184,6 @@ if(NOT DEFINED CONFIG_DONE)
 	get_filename_component(_compiler_name ${CMAKE_C_COMPILER} NAME)
 
 	configure_file(${prj_root}/inc/build_info.h.in ${prj_root}/inc/build_info.h @ONLY)
-
-	set(SED "gsed")
 
 	if(BUILD_PXP)
 		message(STATUS "Setup for PXP")
